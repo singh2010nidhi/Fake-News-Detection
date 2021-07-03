@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Custom Website</title>
+	<link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+
+		<div class="center">
+			<h1>Fake News Detector</h1>
+			<h2>Enter your piece of news to verify it!</h2>
+			<br> </br>
+
+
+			<form action="{{ url_for('predict')}}" method="POST">
+				<textarea name="message" rows="6" cols="50" required="required" style="font-size: 18pt"></textarea>
+				<br> </br>
+
+				<div class="buttons">
+					<button>Predict</button>
+				</div>
+				<br> </br>
+
+				<!-- <div class="buttons">
+					<button>Explore More</button>
+					<button class="btn2">Subscribe Us</button>
+				</div> -->
+
+				<div class="results">
+
+					{% if prediction == ['FAKE']%}
+					<h2 style="color:red;">Looks like a Fake News </h2>
+					{% elif prediction == ['REAL']%}
+					<h2 style="color:green;"><b>Looks like a Real News</b></h2>
+					{% endif %}
+
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
